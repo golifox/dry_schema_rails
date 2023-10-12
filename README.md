@@ -31,7 +31,7 @@ bundle install
    Define your schema classes with necessary validation rules in a block passed to `schema`.
 
    ```ruby
-   class UserSchema < DrySchemaRails::ApplicationSchema
+   class UserSchema < DrySchemaRails::Base
      schema do
        required(:username).filled(:string)
        required(:email).filled(:string, format?: /@/)
@@ -59,6 +59,14 @@ bundle install
 module User
   class CreateValidator < DrySchemaRails::Base
     params User::CreateSchema.params
+     
+    rule(:username) do
+      key.failure('must be unique') if User.exists?(username: value)
+    end
+     
+    rule(:email) do
+      key.failure('must be in internation format') unless value.end_with?('.com')
+    end 
   end
 end
 ```
@@ -67,7 +75,7 @@ end
 ```ruby
 class UsersController < ApiController
   ...
-  schema(:create, &User::CreateSchema.schema) 
+  schema(:create, &UserSchema.schema) 
   
   # This checks maybe in base controller for reusability
   if safe_params&.failure?

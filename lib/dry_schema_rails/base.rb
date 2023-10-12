@@ -1,11 +1,16 @@
 require 'dry-schema'
-require 'active_support/core_ext/class/attribute'
 
 module DrySchemaRails
   class Base
-    class_attribute :_schema_proc, default: -> {}
-
     class << self
+      def _schema_proc
+        @_schema_proc ||= -> {}
+      end
+
+      def _schema_proc=(proc)
+        @_schema_proc = proc
+      end
+
       def call(*args)
         params.call(*args)
       end

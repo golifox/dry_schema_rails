@@ -1,13 +1,17 @@
-### DrySchemaRails: Simplify Your Schema Management in Rails
+# dry_schema_rails [![Gem Version](https://badge.fury.io/rb/dry_schema_rails.svg)](https://badge.fury.io/rb/dry_schema_rails)
+
+Simplify Your Schema Management in Rails.
+
+## Description
 
 DrySchemaRails is a lightweight gem that leverages `dry-schema` for defining schemas in a DRY and consistent manner across your Rails application. It encapsulates common schema definition functionalities, promoting a clean and easy-to-follow schema definition practice.
 
-#### Key Features
+## Key Features
 - **Concise Schema Definitions**: Write compact and clear schema definitions using block syntax.
 - **Reusable Schemas**: Create and reuse schema definitions across different parts of your application.
 - **Extendable**: Easily extend and customize your schema definitions as per your requirements.
 
-#### Installation
+## Installation
 
 Add DrySchemaRails to your Gemfile and bundle.
 
@@ -20,7 +24,7 @@ Run
 bundle install
 ```
 
-#### Quick Usage Guide
+## Quick Usage Guide
 
 1. **Define Schema:**
 
@@ -48,9 +52,9 @@ bundle install
    puts result.errors     # => {}
    ```
 
-#### In-Depth Usage
+## In-Depth Usage
 
-##### Custom Validators
+### Custom Validators
 ```ruby
 module User
   class CreateValidator < DrySchemaRails::Base
@@ -59,7 +63,7 @@ module User
 end
 ```
 
-##### In Controllers
+### In Controllers
 ```ruby
 class UsersController < ApiController
   ...
@@ -78,19 +82,19 @@ class UsersController < ApiController
 end
 ```
 
-### Example Application: DrySchemaRailsDemo
+## Example Application: DrySchemaRailsDemo
 
-#### Idea
+### Idea
 
 Create a Rails application `DrySchemaRailsDemo` demonstrating the usage of `DrySchemaRails` in various common Rails use-cases: model validation, parameter validation in controllers, form object validation, etc.
 
-#### Key Features:
+### Key Features:
 
 - **User Management:** Simple CRUD for managing users with validations using defined schemas.
 - **API Endpoint:** Demonstrate parameter validation for API endpoints.
 - **Form Object:** Use schemas to validate form objects.
 
-#### Implementation
+### Implementation
 
 1. **Model and Schema:**
 
@@ -147,9 +151,13 @@ Create a Rails application `DrySchemaRailsDemo` demonstrating the usage of `DryS
    end
    ```
 
-#### Tests
+## Tests
 
 Write tests for models, controllers, and form objects ensuring schema validations are applied and working as expected.
+
+## License
+
+See `LICENSE` file.
 
 ---
 

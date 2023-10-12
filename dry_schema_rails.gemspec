@@ -1,20 +1,26 @@
-require_relative 'lib/dry_schema_rails/version'
+# coding: utf-8
+lib = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "dry_schema_rails/version"
 
-Gem::Specification.new do |s|
-  s.name = "dry_schema_rails"
-  s.version = DrySchemaRails::VERSION
-  s.date = "2023-10-12"
-  s.summary = "Simple DSL for reusing dry-schema in Rails."
-  s.description = "Simple DSL for reusing dry-schema in Rails. "
-  s.authors = ["David Rybolovlev"]
-  s.email = "i@golifox.com"
-  s.files = ["lib/**/*"]
-  s.homepage = "http://github.com/golifox/dry_schema_rails"
-  s.license = "MIT"
-  s.required_ruby_version = ">= 2.5.0"
+Gem::Specification.new do |spec|
+  spec.name = "dry_schema_rails"
+  spec.version = DrySchemaRails::VERSION
+  spec.date = "2023-10-12"
+  spec.summary = "Simple DSL for reusing dry-schema in Rails."
+  spec.description = "Simple DSL for reusing dry-schema in Rails."
+  spec.authors = ["David Rybolovlev"]
+  spec.email = "i@golifox.com"
+  spec.homepage = "http://github.com/golifox/dry_schema_rails"
+  spec.license = "MIT"
+  spec.required_ruby_version = ">= 2.5.0"
 
-  s.add_dependency "dry-schema", "~> 1.5"
-  s.add_dependency "activesupport", "~> 6.1"
+  spec.files         = Dir["lib/**/*.rb"] + ["README.md", "LICENSE", "CHANGELOG.md"]
+  spec.require_paths = ["lib"]
 
-  s.add_development_dependency "rspec", "~> 3.10"
+  spec.add_dependency "dry-schema", "~> 1.5"
+  spec.add_dependency "activesupport", "~> 6.1"
+
+  spec.add_development_dependency "rspec", "~> 3.10"
+  spec.add_development_dependency "bundler", "~> 2.0"
 end

@@ -55,10 +55,15 @@ bundle install
 ## In-Depth Usage
 
 ### Custom Validators
+
+use as `...Schema.params` or `...Schema.contract`
+
 ```ruby
 module User
-  class CreateValidator < DrySchemaRails::Base
-    params User::CreateSchema.params
+  class CreateValidator < Dry::Validation::Contract # 'dry-validation' gem have to been installed
+    params User::CreateSchema.params # reusing schema as contract params
+    # OR
+    params User::CreateSchema.contract
      
     rule(:username) do
       key.failure('must be unique') if User.exists?(username: value)
@@ -72,6 +77,9 @@ end
 ```
 
 ### In Controllers
+
+use as `...Schema.schema`
+
 ```ruby
 class UsersController < ApiController
   ...
